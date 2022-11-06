@@ -18,6 +18,8 @@
 1. [Arrays](#arrays)
 1. [Strings](#strings)
 1. [Functions](#functions)
+1. [Pointers and References](#pointers-and-references)
+1. [OOP](#oop)
 
 [TODO](#todo)
 1. 
@@ -367,8 +369,78 @@ while (s >> word)
 
 ## Functions
 
+The main function may have parameters
+```cpp
+int main(int argc, char* const argv[])
+```
+
+Basic function put above main
+```cpp
+int max(int x, int y) {
+  return x;
+}
+int max(int x, int y = 0) { // default argument
+  return x;
+}
+```
+- Override by changing number of arguments or type
+- Use `inline` to remove overhead by replacing code at compile time
+
+## Pointers and References
+
+Pointers
+- `datatype *var_name;` or `datatype* var_name;`
+- * operator on pointer returns value that it points to
+- & operator returns address of variable `&var`
+- array notation `nums[1][2]` pointer notation `*(*(nums + 1) + 2)`
+
+References
+- an alternative name for an existing varaible `datatype& var_name`
+- useful for changing variable outside of function
+```cpp
+void swap(int& first, int& second) { }
+int a = 2, b = 3;
+swap(a, b);
+```
+- useful for changing elements in for each loop (avoids copying too)
+```cpp
+for (int& x : vect) {
+  x = x + 5;
+}
+```
+
+## OOP
+- access specifier can be public, private (client and subclass can't access), or protected (client can't access but subclass can)
+```cpp
+class Name {
+  private: // access specifier
+    int a;
+  public: 
+    Name(int x) { // constructor
+      a = x;
+    }
+    ~Name() { } // default destructor
+    void printid() { // function
+      cout << "hi";
+    }
+};
+```
+
+Set function outside of class
+```cpp
+void Person::set_p() {
+    cout << "hi";
+}
+```
+
+Inheritance is private (object cant reach superclass), protected, or public (object can reach superclass)
+```cpp
+class Student: private person { // private inheritance
+```
+
 </blockquote>
 
 # TODO
 - https://www.geeksforgeeks.org/bit-tricks-competitive-programming/?ref=lbp
+- functors (find video to learn)
 - vectors: https://www.geeksforgeeks.org/vector-in-cpp-stl/
