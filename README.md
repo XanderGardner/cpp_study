@@ -20,6 +20,7 @@
 1. [Functions](#functions)
 1. [Pointers and References](#pointers-and-references)
 1. [OOP](#oop)
+1. [Exceptions](#exceptions)
 
 [TODO](#todo)
 1. 
@@ -438,9 +439,18 @@ Inheritance is private (object cant reach superclass), protected, or public (obj
 class Student: private person { // private inheritance
 ```
 
+## Exceptions
+throw exception with `throw x;`
+```cpp
+try {
+  fun(NULL, 0);   
+} catch(...) {
+  cout << "Caught";
+}
+```
+
 </blockquote>
 
 # TODO
 - https://www.geeksforgeeks.org/bit-tricks-competitive-programming/?ref=lbp
 - functors (find video to learn)
-- vectors: https://www.geeksforgeeks.org/vector-in-cpp-stl/
