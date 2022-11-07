@@ -21,6 +21,9 @@
 1. [Pointers and References](#pointers-and-references)
 1. [OOP](#oop)
 1. [Exceptions](#exceptions)
+1. [STL Algorithms](#stl-algorithms)
+1. [STL Containers](#stl-containers)
+
 
 [TODO](#todo)
 1. 
@@ -448,6 +451,141 @@ try {
   cout << "Caught";
 }
 ```
+
+## STL Algorithms
+- sorting
+- searching
+- important stl algorthms
+- useful array algorithms
+- partition operations
+- valarray class
+
+## STL Containers
+Not really used are deque, 
+
+
+### pair
+tuple
+```cpp
+#include <utility>
+pair<int, char> p;
+p.first = 100;
+p.second = 'g';
+pair<int, char> p(1, 'a');
+pair<int, char> p(p1); // copy of p1
+p = {1, 'a'};
+```
+
+### list
+double linked list
+```cpp
+#include <iterator>
+#include <list>
+list<int> l;
+// make list
+for (int i=0; i<10; ++i) {
+    l.push_back(i); // .pop_back() to remove .back() to see
+    l.push_front(i); // .pop_front() to remove, .front() to see
+}
+// traverse list
+list<int>::iterator it;
+for (it = l.begin(); it != l.end(); ++it) {
+    cout << *it;
+}
+l.sort(); // sort
+l.reverse(); // reverse
+l.empty(); // if empty
+l.size(); // size
+l.insert(pos_iter, how_many, ele); // insert
+l.erase(pos_iter_first, pos_iter_last)
+// remove() removes elements
+// remove_if() removes if results in true
+```
+
+### queue
+```cpp
+queue<int> q;
+q.push(10); // add to back
+q.pop(); // remove from front
+q.empty(); // if empty
+q.size();
+q.front(); // see front
+q.back(); // see back
+```
+
+### priority queue
+default is max on top
+```cpp
+#include <queue>
+priority_queue<int> g;
+g.push(10);
+g.top(); // look only
+g.pop(); // pop top
+g.empty(); // if empty
+g.size();
+
+// create min on top
+priority_queue<int, vector<int>, greater<int>> p;
+```
+
+### set
+unique elements in sorted order using binary search trees
+```cpp
+#include <set>
+set<int> a;
+set<int, greater<int>> b;
+a.insert(1); // O(logN)
+// iters: begin() end() rbegin() rend() find(5)
+a.size();
+a.empty();
+a.erase(10);
+a.clear();
+a.count(5); // 1 or 0 if in
+```
+
+### unordered set
+unique elements in hashtable; same functions as set
+```cpp
+#include <bits/stdc++.h>
+unordered_set<int> a;
+vector<int> vec({ 1, 2, 2, 1, 3, 1, 4 }); // input
+unordered_set<int> a(vec.begin(), vec.end()); // create from vector
+```
+
+### multiset
+like set (sorted order) but can have more than one occurance, using binary search trees; same functions as set
+```cpp
+#include <set>
+multiset<int> a;
+a.insert(20);
+a.erase(1); //removes all instances
+a.erase(a.find(1)); //removes one instance
+a.count(1); // counts number occurances
+```
+unordered multiset
+
+### map
+key-value pairs using a binary search tree
+```cpp
+#include <map>
+map<int, int> a;
+a[1] = 20; // or a.insert(pair<int, int>(1,20));
+
+map<int, int>::iterator itr;
+for (itr = a.begin(); itr != a.end(); ++itr) {
+    cout << itr->first << '\t' << itr->second;
+}
+```
+multimap; (hash tables) unordered map; unordered multimap
+
+
+### vector
+- arrays
+- forward list
+- stack
+
+
+
 
 </blockquote>
 
