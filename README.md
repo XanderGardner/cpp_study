@@ -463,6 +463,19 @@ try {
 ## STL Containers
 Not really used are deque, 
 
+### vector
+- resizing array
+```cpp
+#include <vector>
+vector<int> a;
+
+```
+
+### arrays
+
+### forward list
+
+### stack
 
 ### pair
 tuple
@@ -577,15 +590,6 @@ for (itr = a.begin(); itr != a.end(); ++itr) {
 }
 ```
 multimap; (hash tables) unordered map; unordered multimap
-
-
-### vector
-- arrays
-- forward list
-- stack
-
-
-
 
 </blockquote>
 
