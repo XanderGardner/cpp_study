@@ -468,14 +468,38 @@ Not really used are deque,
 ```cpp
 #include <vector>
 vector<int> a;
-
+a = {1,2,3};
+// .empty() .size() .emplace()
+a[2];
+a[1] = 2;
 ```
 
 ### arrays
+- basic array that holds its own size
+```cpp
+array<int,6> a = {1,2,3}; // 1,2,3,0,0,0
+```
 
 ### forward list
+- singly linked list
+```cpp
+#include <forward_list>
+forward_list<int> a;
+a = {1,2,3};
+// .push_front() .pop_front() .insert_after() .remove_if()
+*++a.begin(); // second element
+```
 
 ### stack
+- basic stack
+```cpp
+#include <stack>
+stack<int> a = {1,2,3};
+// .empty() .size()
+a.push(3);
+a.top(); // just look
+a.pop();
+```
 
 ### pair
 tuple
