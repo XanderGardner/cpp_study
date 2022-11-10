@@ -306,6 +306,12 @@ int a[10] = {1}; // initialized to all 1s
 int a[] = {1, 2, 3};
 int b[5][2]; // 5 by 2 matrix
 ```
+convert c style array to std::array
+```cpp
+int r[] = {1,2,3};
+array<int, 3> a;
+copy(begin(arr), end(arr), a.begin());
+```
 
 ## Strings
 - objects allocated dynamically and slower than char arrays
@@ -460,8 +466,25 @@ try {
 ```
 
 ## STL Algorithms
-- sorting
-- searching
+
+### sorting
+- uses quicksort, (heapsort if bad partitionings happen), then insertion sort once smaller
+- inplace
+```cpp
+vector<int> a = {3,3,5,3,4};
+sort(a.begin(), a.end()); // increasing
+sort(a.begin(), a.end(), greater<int>()); // decreasing
+sort(a.begin(), a.end(), my_fun()); // using your comparison
+```
+    
+### searching
+- binary search
+```cpp
+binary_search(a.begin(), a.end(), 5); // true or false
+lower_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5* 5 6} or {1 6*}
+upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
+```
+    
 - important stl algorthms
 - useful array algorithms
 - partition operations
@@ -486,7 +509,7 @@ var_name.num = 5;
 ```cpp
 #include <vector>
 vector<int> a;
-a = {1,2,3};
+a = {1,2,3}; // vector<int> a{1,2,3};
 // .empty() .size() .emplace()
 a[2];
 a[1] = 2;
