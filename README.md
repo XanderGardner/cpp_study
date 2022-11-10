@@ -505,7 +505,7 @@ a = {1,2,3};
 - basic stack
 ```cpp
 #include <stack>
-stack<int> a = {1,2,3};
+stack<int> a;
 // .empty() .size()
 a.push(3);
 a.top(); // just look
