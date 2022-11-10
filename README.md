@@ -370,6 +370,13 @@ string word;
 while (s >> word)
     // now you have word by word
 ```
+a string is a stack
+```cpp
+string a = "ab";
+a.push_back("c");
+a.back(); // just look
+a.pop_back();
+```
 
 ## Functions
 
