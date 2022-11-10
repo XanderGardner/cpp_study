@@ -463,6 +463,17 @@ try {
 ## STL Containers
 Not really used are deque, 
 
+### struct
+- multiple variables in one container
+```cpp
+struct name { // This structure is named "myDataType"
+  int num;
+  string str;
+};
+name var_name;
+var_name.num = 5;
+```
+
 ### vector
 - resizing array
 ```cpp
