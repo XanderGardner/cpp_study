@@ -466,6 +466,7 @@ try {
 ```
 
 ## STL Algorithms
+`#include <algorithm>`
 
 ### sorting
 - uses quicksort, (heapsort if bad partitionings happen), then insertion sort once smaller
@@ -489,6 +490,36 @@ upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 - useful array algorithms
 - partition operations
 - valarray class
+    
+### Useful
+Vector
+```cpp
+reverse(a.begin(), a.end()); // reverses
+*max_element(a.begin(), a.end()); // (pointer to) max
+distance(a.begin(), max_element(a.begin(), a.end())); // index max
+*min_element(a.begin(), a.end()); // (pointer to) min
+distance(a.begin(), max_element(a.begin(), a.end())); // index min
+accumulate(a.begin(), a.end(), 0); // sum all and 0
+count(a.begin(), a.end(), 5); // number occurances of 5
+find(a.begin(), a.end(), 5); // iterator to first occurance of 5 or a.end() if not found
+unique(a.begin(), a.end()); // keeps only unique but doesn't resize, returns pointer to new end
+a.erase(unique(a.begin(),a.end()),a.end()); // keeps only unique
+```
+Array
+```cpp
+all_of(a, ar+6, [](int x) { return x>0; }); // bool if all positive
+any_of(ar, ar+6, [](int x){ return x<0; }); // bool if any are negative
+none_of(ar, ar+6, [](int x){ return x<0; }); // bool if none are negative
+copy_n(a, 6, b); // deep copies a to b (all 6 elements)
+iota(ar, ar+6, 20); // array becomes 20 21 22 23 24 25
+```
+Partition (vector)
+```cpp
+is_partitioned(vect.begin(), vect.end(), [](int x) { return x%2==0; }); // bool if partitioned
+partition(vect.begin(), vect.end(), [](int x) { return x%2==0; }) // 2 3 4 3 7 9, partitions
+// stable_partition(...) preserves order
+// partition_point(...) iterator to first element with false property
+```
 
 ## STL Containers
 Not really used are deque, 
