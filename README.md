@@ -1,319 +1,29 @@
-# cpp_study
-
 # Table of Contents
-[Basics](#basics)
-1. [Compiling](#compiling)
-1. [namespace and libraries](#namespace-and-libraries)
-1. [Comments](#comments)
-1. [Variables](#variables)
-    1. [Datatypes](#datatypes)
-    1. [Modifiers](#modifiers)
-    1. [Min and max values](#min-and-max-values)
-    1. [local instance or static](#local-instance-or-static)
-1. [Operators](#operators)
-    1. [Memory](#memory)
-1. [Loops](#loops)
-1. [Control](#control)
-1. [Input and Output](#input-and-output)
-1. [Arrays](#arrays)
-1. [Strings](#strings)
-1. [Functions](#functions)
-1. [Pointers and References](#pointers-and-references)
-1. [OOP](#oop)
-1. [Exceptions](#exceptions)
-1. [STL Algorithms](#stl-algorithms)
-1. [STL Containers](#stl-containers)
-
-
-[TODO](#todo)
-1. 
+- [basics](basics.md)
+- data structures
+  1. [string](#string)
+  1. [struct](#struct)
+  1. [vector](#vector)
+  1. [array](#array)
+  1. [forward list](#forward-list)
+  1. [stack](#stack)
+  1. [pair](#pair)
+  1. [list](#list)
+  1. [queue](#queue)
+  1. [priority queue](#priority-queue)
+  1. [set](#set)
+  1. [unordered set](#unordered-set)
+  1. [multiset](#multiset)
+- algorithms
+  1. [sorting](#sorting)
+  1. [searching](#searching)
+  1. [useful](#useful)
+- tricks
+- [todo](#todo)
 
 ---
 
-# Basics
-
-<blockquote>
-
-## Compiling
-- In hello.cpp file
-```cpp
-#include <iostream>
-int main() {
-  std::cout << "Hello World!\n";
-}
-```
-- compile with `g++ hello.cpp` in terminal
-- specify output file with `g++ hello.cpp -o hello`
-- g++ is the GNU C++ Compiler which is a compiler in Linux to compile C++ programs
-- gcc is a different compiler, which won't automatically link in the std C++ libraries
-- clang in the compiler for mac (g++ will run clang on mac, just get xcode)
-- then run with `./hello`
-- more on compiling with g++: https://www.geeksforgeeks.org/compiling-with-g-plus-plus/
-
-## namespace and libraries
-
-```cpp
-#include <iostream>     // std::cout, cin, cerr
-#include <string>       // std::string
-#include <cstddef>      // std::size_t
-
-using namespace std;    // now we can do cout instead of std::cout
-```
-
-## Comments
-```cpp
-// one line
-/*
-multi line
-*/
-```
-
-## Variables
-Example use
-```cpp
-int score; // declare
-int score, score2, score3; // declare multiple
-score = 0; // initialize
-```
-- `sizeof(a)` returns number of bytes
-
-### Datatypes
-1. Derived
-- Function
-- Array
-- Pointer
-- Reference
-
-2. User Defined
-- Class
-- Structure
-- Union
-- Enum
-- Typedef
-
-3. Built In
-```cpp
-int a = 1;        // Interger:  4 bytes -2^31 to 2^31-1
-char a = 'a';     // Character: 1 byte (ASCII)
-bool a = true;    // Boolean:   1 byte
-float a = 4.0;    // Floating Point: 4 bytes
-double a = 1.0;   // Double Floating Point: 8 bytes
-void;              // means without any value: usually returned
-wchar_t a = w'a'; // Wide Character: 2or4 bytes (UNICODE)
-```
-
-### Modifiers
-Modifiers are signed, unsigned, long, and short
-```cpp
-long long int a = 1; // 8 bytes
-unigned long int a = 1; // 4 bytes
-```
-
-### Min and max values
-Get max a min values of a type with header file
-```cpp
-#include <limits.h>
-INT_MIN; // int min
-INT_MAX; // int max
-LLONG_MAX; // long long int max
-```
-
-### local instance or static
-Variables can be local, instance, or static. Static are like instance variables but only one exist per class no matter how many objects are made.
-
-## Operators
-- Unary: ++, --
-- Arithmetic: + - * / %
-- Relational: <, <=, >, >=, ==, !=
-- Logical: &&, ||, !
-- Assignment: =, +=, -=, *=, /=, %=
-- Bitwise: &, |, <<, >>, ~, ^
-
-Other Operators:
-- Casting: (type)
-- sizeof(a) returns size_t object w/ num bytes
-- comma operator: seperates stuff
-- Coniditional: e1 ? e2 : e3
-- dot (.) to reference members of classes, strucutres, and unitons
-- arrow (->) for pointer to an object
-- & for address of variable
-- * for pointer to a variable
-
-### Memory:
-- malloc(), calloc(), and free() in c become new and delete for heap
-- stack: local variables
-- heap: static variables, pointers
-- instance variables are in where the object is
-```cpp
-int* p = NULL;
-p = new(nothrow) int(25);
-if (!p) { // allocation failed
-}
-delete p; // delete[] p (for array)
-```
-
-## Loops
-
-for loop
-```cpp
-for(int i = 0; i < n; i++) {
-  
-}
-```
-
-while
-```cpp
-while (i < 6) {
-  i++;
-}
-```
-
-do-while
-```cpp
-do {
-  i++;
-} while (i < 6);
-```
-
-for-each
-```cpp
-#include<algorithm>
-for_each(arr, arr + 5, function);
-```
-
-for-range
-```cpp
-for (auto i : v)
-  std::cout << i << ' ';
-for (int i : a)
-  std::cout << i << ' ';
-```
-
-## Control
-```cpp
-if(condition)
-  statement;
-if(condition) {
-  statement1;
-  statement2;
-}
-
-#if else
-if(condition) {
-
-} else if (condition) {
-
-} else {
-
-}
-
-switch(exp) {
-  case1:
-    break;
-  case2:
-    break;
-  default:
-}
-```
-Jump statments are `break;` `continue;` `return 0;` `goto label1;` which will goto the line `label1:`
-
-## Input and Output
-
-```cpp
-#include <iostream> // include library iostream
-std::cout << "text here"; // print output
-std::cin >> variable_name; // read input to variable name (user hits enter)
-```
-- be more efficient
-```cpp
-using namespace std;
-cout << "My age is " << age << "\n" // chaining output
-cout << "done" << endl // endl makes new line and flushes stream
-```
-
-Files use `ofstream` `ifstream` or `fstream`. o is for output, i is for input, and the last is for both
-```cpp
-#include <fstream>
-
-// read
-ofstream MyFile("filename.txt");
-MyFile << "printing here";
-MyFile.close();
-
-// print
-string myText;
-ifstream MyReadFile("filename.txt");
-while (getline (MyReadFile, myText)) {
-  cout << myText;
-}
-MyReadFile.close();
-```
-
-Reading input
-```cpp
-int a;
-cin >> a; # reads until the user returns (which is a \n)
-cin >> ws; # discards the white space (which is the \n)
-string s;
-getline(cin, s); # reads line
-```
-
-Redirect stdout to file
-```cpp
-freopen("textfile.txt", "w", stdout); // redirects stdout to testfile
-```
-
-Redirecting using buffers
-```cpp
-#include <fstream>
-#include <iostream>
-fstream file;
-file.open("cout.txt", ios::out);
-
-// Backup streambuffers of  cout
-streambuf* stream_buffer_cout = cout.rdbuf();
-streambuf* stream_buffer_cin = cin.rdbuf();
-
-// Get the streambuffer of the file
-streambuf* stream_buffer_file = file.rdbuf();
-
-// Redirect cout to file
-cout.rdbuf(stream_buffer_file);
-
-cout << "This line written to file" << endl;
-
-// Redirect cout back to screen
-cout.rdbuf(stream_buffer_cout);
-cout << "This line is written to screen" << endl;
-
-file.close();
-```    
-
-Throwing an error and writting to stderror
-```cpp
-cerr << "An error occurred"; // no buffer, meaning no storing the error
-clog << "Error occured"; // buffered, meaning flush() needed (or auto flushed at end)
-```
-
-## Arrays
-- specific length determined and never changed (costly addition/deletion)
-- name is pointer to first element of array
-- there is NO index out of bounds checking in cpp
-```cpp
-int a[10]; // whatever is there is there
-int a[10] = {}; // initialized to all 0s
-int a[10] = {1}; // initialized to all 1s
-int a[] = {1, 2, 3};
-int b[5][2]; // 5 by 2 matrix
-```
-convert c style array to std::array
-```cpp
-int r[] = {1,2,3};
-array<int, 3> a;
-copy(begin(arr), end(arr), a.begin());
-```
-
-## Strings
+# string
 - objects allocated dynamically and slower than char arrays
 - `std::string` object
 ```cpp
@@ -384,103 +94,394 @@ a.back(); // just look
 a.pop_back();
 ```
 
-## Functions
-
-The main function may have parameters
+# struct
+- multiple variables in one container
 ```cpp
-int main(int argc, char* const argv[])
-```
-
-Basic function put above main
-```cpp
-int max(int x, int y) {
-  return x;
-}
-int max(int x, int y = 0) { // default argument
-  return x;
-}
-```
-- Override by changing number of arguments or type
-- Use `inline` to remove overhead by replacing code at compile time
-
-## Pointers and References
-
-Pointers
-- `datatype *var_name;` or `datatype* var_name;`
-- * operator on pointer returns value that it points to
-- & operator returns address of variable `&var`
-- array notation `nums[1][2]` pointer notation `*(*(nums + 1) + 2)`
-
-References
-- an alternative name for an existing varaible `datatype& var_name`
-- useful for changing variable outside of function
-```cpp
-void swap(int& first, int& second) { }
-int a = 2, b = 3;
-swap(a, b);
-```
-- useful for changing elements in for each loop (avoids copying too)
-```cpp
-for (int& x : vect) {
-  x = x + 5;
-}
-```
-
-## OOP
-- access specifier can be public, private (client and subclass can't access), or protected (client can't access but subclass can)
-```cpp
-class Name {
-  private: // access specifier
-    int a;
-  public: 
-    Name(int x) { // constructor
-      a = x;
-    }
-    ~Name() { } // default destructor
-    void printid() { // function
-      cout << "hi";
-    }
+struct name { // This structure is named "myDataType"
+  int num;
+  string str;
 };
+name var_name;
+var_name.num = 5;
 ```
 
-Set function outside of class
+# vector
+- resizing array
 ```cpp
-void Person::set_p() {
-    cout << "hi";
+#include <vector>
+vector<int> a;
+a = {1,2,3}; // vector<int> a{1,2,3};
+// .empty() .size() .emplace()
+a[2];
+a[1] = 2;
+```
+
+# array
+- basic array that holds its own size
+```cpp
+array<int,6> a = {1,2,3}; // 1,2,3,0,0,0
+```
+
+# forward list
+- singly linked list
+```cpp
+#include <forward_list>
+forward_list<int> a;
+a = {1,2,3};
+// .push_front() .pop_front() .insert_after() .remove_if()
+*++a.begin(); // second element
+```
+
+# stack
+- basic stack
+```cpp
+#include <stack>
+stack<int> a;
+// .empty() .size()
+a.push(3);
+a.top(); // just look
+a.pop();
+```
+
+# pair
+tuple
+```cpp
+#include <utility>
+pair<int, char> p;
+p.first = 100;
+p.second = 'g';
+pair<int, char> p(1, 'a');
+pair<int, char> p(p1); // copy of p1
+p = {1, 'a'};
+```
+
+# list
+double linked list
+```cpp
+#include <iterator>
+#include <list>
+list<int> l;
+// make list
+for (int i=0; i<10; ++i) {
+    l.push_back(i); // .pop_back() to remove .back() to see
+    l.push_front(i); // .pop_front() to remove, .front() to see
+}
+// traverse list
+list<int>::iterator it;
+for (it = l.begin(); it != l.end(); ++it) {
+    cout << *it;
+}
+l.sort(); // sort
+l.reverse(); // reverse
+l.empty(); // if empty
+l.size(); // size
+l.insert(pos_iter, how_many, ele); // insert
+l.erase(pos_iter_first, pos_iter_last)
+// remove() removes elements
+// remove_if() removes if results in true
+```
+
+# queue
+```cpp
+queue<int> q;
+q.push(10); // add to back
+q.pop(); // remove from front
+q.empty(); // if empty
+q.size();
+q.front(); // see front
+q.back(); // see back
+```
+
+# priority queue
+default is max on top
+```cpp
+#include <queue>
+priority_queue<int> g;
+g.push(10);
+g.top(); // look only
+g.pop(); // pop top
+g.empty(); // if empty
+g.size();
+
+// create min on top
+priority_queue<int, vector<int>, greater<int>> p;
+```
+
+# set
+- sorted, unique elements (binary search tree)
+- iterating over set is in order
+```cpp
+#include <set>
+
+// create
+set<int> a;
+set<int, greater<int>> b;
+vector<int> v({ 1, 2, 3});
+set<int> d(v.begin(), v.end());
+set<int> e = {3, 2, 5};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a.insert(1); 
+
+// read
+a.count(5); // 1 or 0 for set
+
+// remove
+a.erase(10);
+a.clear();
+```
+
+# unordered set
+- not sorted, unique elements (hashing)
+```cpp
+#include <unordered_set>
+
+// create
+unordered_set<int> a;
+unordered_set<int, greater<int>> b;
+vector<int> v({ 1, 2, 3});
+unordered_set<int> d(v.begin(), v.end());
+unordered_set<int> e = {3, 2, 5};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a.insert(1); 
+
+// read
+a.count(5); // 1 or 0 for set
+
+// remove
+a.erase(10);
+a.clear();
+```
+
+# multiset
+- sorted, not unique elements (red-black tree)
+- iterating over set is in order
+```cpp
+#include <set>
+
+// create
+multiset<int> a;
+multiset<int, greater<int>> b;
+vector<int> v({ 1, 2, 2, 3});
+multiset<int> d(v.begin(), v.end());
+multiset<int> e = {3, 2, 2, 5};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a.insert(1); 
+a.insert({1,2,3}) // insert multiple
+a.insert(v.begin(), v.end())
+
+// read
+a.count(5);
+
+// remove
+a.erase(10); //removes all instances
+a.erase(a.find(1)); //removes one instance
+a.clear();
+```
+
+# unordered multiset
+- not sorted, not unique elements (hashing)
+```cpp
+#include <unordered_set>
+
+// create
+unordered_multiset<int> a;
+unordered_multiset<int, greater<int>> b;
+vector<int> v({ 1, 2, 2, 3});
+unordered_multiset<int> d(v.begin(), v.end());
+unordered_multiset<int> e = {3, 2, 2, 5};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a.insert(1); 
+a.insert({1,2,3}) // insert multiple
+a.insert(v.begin(), v.end())
+
+// read
+a.count(5);
+
+// remove
+a.erase(10); //removes all instances
+a.erase(a.find(1)); //removes one instance
+a.clear();
+```
+
+# map
+- sorted, unique keys in key-value pairs (binary search tree)
+- iterating over map has keys in order
+```cpp
+#include <map>
+
+// create
+map<int, int> a;
+map<int, int, greater<int>> b;
+vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
+map<int, int> d(v.begin(), v.end());
+map<int, int> e = {{1,2}, {2,3}};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a[2] = 3;
+a.insert({{1,2},{2,3}}); // insert multiple
+a.insert(v.begin(), v.end());
+
+// read
+a[2];
+
+// remove
+a.erase(2); 
+a.clear();
+
+// iterating
+for (auto i : a) {
+    cout << i.first << ' ' << i.second;
 }
 ```
 
-Inheritance is private (object cant reach superclass), protected, or public (object can reach superclass)
+# unordered map
+- not sorted, unique keys in key-value pairs (hashing)
 ```cpp
-class Student: private person { // private inheritance
-```
+#include <unordered_map>
 
-## Exceptions
-throw exception with `throw x;`
-```cpp
-try {
-  fun(NULL, 0);   
-} catch(...) {
-  cout << "Caught";
+// create
+unordered_map<int, int> a;
+unordered_map<int, int, greater<int>> b;
+vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
+unordered_map<int, int> d(v.begin(), v.end());
+unordered_map<int, int> e = {{1,2}, {2,3}};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a[2] = 3;
+a.insert({{1,2},{2,3}}); // insert multiple
+a.insert(v.begin(), v.end());
+
+// read
+a[2];
+
+// remove
+a.erase(2); 
+a.clear();
+
+// iterating
+for (auto i : a) {
+    cout << i.first << ' ' << i.second;
 }
 ```
 
-## STL Algorithms
-`#include <algorithm>`
+# multimap
+- sorted, not unique keys in key-value pairs (red-black tree)
+- iterating over multimap has keys in order
+```cpp
+#include <map>
 
-### sorting
+// create
+multimap<int, int> a;
+multimap<int, int, greater<int>> b;
+vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
+multimap<int, int> d(v.begin(), v.end());
+multimap<int, int> e = {{1,2}, {2,3}};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a.insert({1,1});
+a.insert({{1,2},{2,3}}); // insert multiple
+a.insert(v.begin(), v.end());
+
+// read
+auto itr = a.equal_range(1);
+for (auto i = itr.first; i != itr.second; i++) {
+  cout << i.first << ' ' << i.second;
+}
+
+// remove
+a.erase(2); // erases all pairs with key
+a.clear();
+
+// iterating
+for (auto i : a) {
+    cout << i.first << ' ' << i.second;
+}
+```
+
+# unordered_multimap
+- not sorted, not unique keys in key-value pairs (hashing)
+```cpp
+#include <unordered_multimap>
+
+// create
+unordered_multimap<int, int> a;
+unordered_multimap<int, int, greater<int>> b;
+vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
+unordered_multimap<int, int> d(v.begin(), v.end());
+unordered_multimap<int, int> e = {{1,2}, {2,3}};
+
+// size
+a.size();
+a.empty();
+
+// insert
+a.insert({1,1});
+a.insert({{1,2},{2,3}}); // insert multiple
+a.insert(v.begin(), v.end());
+
+// read
+auto itr = a.equal_range(1);
+for (auto i = itr.first; i != itr.second; i++) {
+  cout << i.first << ' ' << i.second;
+}
+
+// remove
+a.erase(2); // erases all pairs with key
+a.clear();
+
+// iterating
+for (auto i : a) {
+    cout << i.first << ' ' << i.second;
+}
+```
+
+# sorting
 - uses quicksort, (heapsort if bad partitionings happen), then insertion sort once smaller
 - inplace
 ```cpp
+#include <algorithm>
 vector<int> a = {3,3,5,3,4};
 sort(a.begin(), a.end()); // increasing
 sort(a.begin(), a.end(), greater<int>()); // decreasing
 sort(a.begin(), a.end(), my_fun()); // using your comparison
 ```
     
-### searching
+# searching
 - binary search
 ```cpp
+#include <algorithm>
 binary_search(a.begin(), a.end(), 5); // true or false
 lower_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5* 5 6} or {1 6*}
 upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
@@ -491,9 +492,10 @@ upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 - partition operations
 - valarray class
     
-### Useful
+# useful
 Vector
 ```cpp
+#include <algorithm>
 reverse(a.begin(), a.end()); // reverses
 *max_element(a.begin(), a.end()); // (pointer to) max
 distance(a.begin(), max_element(a.begin(), a.end())); // index max
@@ -521,174 +523,6 @@ partition(vect.begin(), vect.end(), [](int x) { return x%2==0; }) // 2 3 4 3 7 9
 // partition_point(...) iterator to first element with false property
 ```
 
-## STL Containers
-Not really used are deque, 
-
-### struct
-- multiple variables in one container
-```cpp
-struct name { // This structure is named "myDataType"
-  int num;
-  string str;
-};
-name var_name;
-var_name.num = 5;
-```
-
-### vector
-- resizing array
-```cpp
-#include <vector>
-vector<int> a;
-a = {1,2,3}; // vector<int> a{1,2,3};
-// .empty() .size() .emplace()
-a[2];
-a[1] = 2;
-```
-
-### arrays
-- basic array that holds its own size
-```cpp
-array<int,6> a = {1,2,3}; // 1,2,3,0,0,0
-```
-
-### forward list
-- singly linked list
-```cpp
-#include <forward_list>
-forward_list<int> a;
-a = {1,2,3};
-// .push_front() .pop_front() .insert_after() .remove_if()
-*++a.begin(); // second element
-```
-
-### stack
-- basic stack
-```cpp
-#include <stack>
-stack<int> a;
-// .empty() .size()
-a.push(3);
-a.top(); // just look
-a.pop();
-```
-
-### pair
-tuple
-```cpp
-#include <utility>
-pair<int, char> p;
-p.first = 100;
-p.second = 'g';
-pair<int, char> p(1, 'a');
-pair<int, char> p(p1); // copy of p1
-p = {1, 'a'};
-```
-
-### list
-double linked list
-```cpp
-#include <iterator>
-#include <list>
-list<int> l;
-// make list
-for (int i=0; i<10; ++i) {
-    l.push_back(i); // .pop_back() to remove .back() to see
-    l.push_front(i); // .pop_front() to remove, .front() to see
-}
-// traverse list
-list<int>::iterator it;
-for (it = l.begin(); it != l.end(); ++it) {
-    cout << *it;
-}
-l.sort(); // sort
-l.reverse(); // reverse
-l.empty(); // if empty
-l.size(); // size
-l.insert(pos_iter, how_many, ele); // insert
-l.erase(pos_iter_first, pos_iter_last)
-// remove() removes elements
-// remove_if() removes if results in true
-```
-
-### queue
-```cpp
-queue<int> q;
-q.push(10); // add to back
-q.pop(); // remove from front
-q.empty(); // if empty
-q.size();
-q.front(); // see front
-q.back(); // see back
-```
-
-### priority queue
-default is max on top
-```cpp
-#include <queue>
-priority_queue<int> g;
-g.push(10);
-g.top(); // look only
-g.pop(); // pop top
-g.empty(); // if empty
-g.size();
-
-// create min on top
-priority_queue<int, vector<int>, greater<int>> p;
-```
-
-### set
-unique elements in sorted order using binary search trees
-```cpp
-#include <set>
-set<int> a;
-set<int, greater<int>> b;
-a.insert(1); // O(logN)
-// iters: begin() end() rbegin() rend() find(5)
-a.size();
-a.empty();
-a.erase(10);
-a.clear();
-a.count(5); // 1 or 0 if in
-```
-
-### unordered set
-unique elements in hashtable; same functions as set
-```cpp
-#include <bits/stdc++.h>
-unordered_set<int> a;
-vector<int> vec({ 1, 2, 2, 1, 3, 1, 4 }); // input
-unordered_set<int> a(vec.begin(), vec.end()); // create from vector
-```
-
-### multiset
-like set (sorted order) but can have more than one occurance, using binary search trees; same functions as set
-```cpp
-#include <set>
-multiset<int> a;
-a.insert(20);
-a.erase(1); //removes all instances
-a.erase(a.find(1)); //removes one instance
-a.count(1); // counts number occurances
-```
-unordered multiset
-
-### map
-key-value pairs using a binary search tree
-```cpp
-#include <map>
-map<int, int> a;
-a[1] = 20; // or a.insert(pair<int, int>(1,20));
-
-map<int, int>::iterator itr;
-for (itr = a.begin(); itr != a.end(); ++itr) {
-    cout << itr->first << '\t' << itr->second;
-}
-```
-multimap; (hash tables) unordered map; unordered multimap
-
-</blockquote>
-
-# TODO
+# todo
 - https://www.geeksforgeeks.org/bit-tricks-competitive-programming/?ref=lbp
 - functors (find video to learn)
