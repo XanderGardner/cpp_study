@@ -294,7 +294,6 @@ a.clear();
 
 // create
 unordered_set<int> a;
-unordered_set<int, greater<int>> b;
 vector<int> v({ 1, 2, 3});
 unordered_set<int> d(v.begin(), v.end());
 unordered_set<int> e = {3, 2, 5};
@@ -352,7 +351,6 @@ a.clear();
 
 // create
 unordered_multiset<int> a;
-unordered_multiset<int, greater<int>> b;
 vector<int> v({ 1, 2, 2, 3});
 unordered_multiset<int> d(v.begin(), v.end());
 unordered_multiset<int> e = {3, 2, 2, 5};
@@ -417,7 +415,6 @@ for (auto i : a) {
 
 // create
 unordered_map<int, int> a;
-unordered_map<int, int, greater<int>> b;
 vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
 unordered_map<int, int> d(v.begin(), v.end());
 unordered_map<int, int> e = {{1,2}, {2,3}};
@@ -489,7 +486,6 @@ for (auto i : a) {
 
 // create
 unordered_multimap<int, int> a;
-unordered_multimap<int, int, greater<int>> b;
 vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
 unordered_multimap<int, int> d(v.begin(), v.end());
 unordered_multimap<int, int> e = {{1,2}, {2,3}};
