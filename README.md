@@ -1,6 +1,6 @@
 # Table of Contents
 - [basics](basics.md)
-- data structures
+- stl data structures
   - [string](#string)
   - [struct](#struct)
   - [vector](#vector)
@@ -14,12 +14,11 @@
   - [set](#set)
   - [unordered set](#unordered-set)
   - [multiset](#multiset)
-- algorithms
+- stl algorithms
   - [sorting](#sorting)
   - [searching](#searching)
-  - [useful](#useful)
-- tools
-  
+- implemented
+
 - [todo](#todo)
 
 ---
@@ -46,6 +45,7 @@ s.pop_back();
 s.append("more");
 s[2] = 'c';
 b.replace(2,3,"hit"); // replace charts starting 2, length 3 with "hit"
+transform(s.begin(), s.end(), s.begin(), [](auto c) { return toupper(c); }); // to uppercase
 
 // delete
 s.clear();
@@ -542,5 +542,18 @@ upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 
 
 # todo
-- https://www.geeksforgeeks.org/bit-tricks-competitive-programming/?ref=lbp
-- functors (find video to learn)
+- functors
+- defaultdict
+- linked list
+- graphs
+  - dfs
+  - bfs
+- dynamic programming
+- unions
+- trees
+  - dfs
+  - bfs
+- kd trees
+- fenwick tree
+- segment tree
+
