@@ -90,6 +90,8 @@ var_name.num = 5;
 
 // create
 vector<int> a = {1,2,3};
+vector<int> a(10); // size 10, all 0s
+vector<int> a(10, 2); // size 10, all 2s
 
 // size
 a.size()
@@ -98,9 +100,7 @@ a.empty()
 // access
 a[2];
 a[1] = 2;
-a.push_front(1);
 a.push_back(1);
-a.pop_front();
 a.pop_back();
 
 // insert (emplace is inplace efficient inserting)
