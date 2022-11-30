@@ -98,8 +98,13 @@ a.empty()
 // access
 a[2];
 a[1] = 2;
+a.push_front(1);
+a.push_back(1);
+a.pop_front();
+a.pop_back();
 
 // insert (emplace is inplace efficient inserting)
+a.insert(a.end(), v.begin(), v.end()); // append vector to end [a, v]
 a.emplace(vec.begin(), 5); // {5,1,2,3}
 a.emplace(vec.end()-1, 5); // {1,2,5,3}
 ```
