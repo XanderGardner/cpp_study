@@ -7,19 +7,20 @@
   - [struct](#struct)
   - [vector](#vector)
   - [array](#array)
-  - [forward list](#forward-list)
+  - [forward_list](#forward_list)
   - [stack](#stack)
   - [pair](#pair)
   - [list](#list)
   - [queue](#queue)
-  - [priority queue](#priority-queue)
+  - [priority_queue](#priority_queue)
   - [set](#set)
-  - [unordered set](#unordered-set)
+  - [unordered_set](#unordered_set)
   - [multiset](#multiset)
   - [unordered_multiset](#unordered_multiset)
   - [map](#map)
   - [unordered_map](#unordered_map)
   - [multimap](#multimap)
+  - [unordered_multimap)(#unordered_multimap)
 - stl algorithms
   - [sorting](#sorting)
   - [searching](#searching)
@@ -165,7 +166,7 @@ partition(vect.begin(), vect.end(), [](int x) { return x%2==0; }) // 2 3 4 3 7 9
 array<int,6> a = {1,2,3}; // 1,2,3,0,0,0
 ```
 
-# forward list
+# forward_list
 - singly linked list
 ```cpp
 #include <forward_list>
@@ -249,7 +250,7 @@ q.front();
 q.back();
 ```
 
-# priority queue
+# priority_queue
 default is max on top
 ```cpp
 #include <queue>
@@ -296,7 +297,7 @@ a.erase(10);
 a.clear();
 ```
 
-# unordered set
+# unordered_set
 - not sorted, unique elements (hashing)
 ```cpp
 #include <unordered_set>
@@ -353,7 +354,7 @@ a.erase(a.find(1)); //removes one instance
 a.clear();
 ```
 
-# unordered multiset
+# unordered_multiset
 - not sorted, not unique elements (hashing)
 ```cpp
 #include <unordered_set>
@@ -417,7 +418,7 @@ for (auto i : a) {
 }
 ```
 
-# unordered map
+# unordered_map
 - not sorted, unique keys in key-value pairs (hashing)
 ```cpp
 #include <unordered_map>
