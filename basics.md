@@ -19,6 +19,7 @@
 - [Pointers and References](#pointers-and-references)
 - [OOP](#oop)
 - [Exceptions](#exceptions)
+- [Lambdas](#lambdas)
 
 ---
 
@@ -402,4 +403,14 @@ use assert statements at compile time
 ```cpp
 #include <cassert>
 static_assert(2+2==3+1, "2+2 = 3+1");
+```
+
+# Lambdas
+- anonymous function
+- capture clause allows use of local variables
+```cpp
+// capture clause first
+// then inputs
+// then function
+[loc_var](int input_x) { return (input_x == loc_var); }
 ```

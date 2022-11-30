@@ -18,8 +18,8 @@
   - [sorting](#sorting)
   - [searching](#searching)
   - [useful](#useful)
-
-- tricks
+- tools
+  
 - [todo](#todo)
 
 ---
@@ -128,6 +128,17 @@ find(a.begin(), a.end(), 5); // iterator to first occurance of 5 or a.end() if n
 // get unique
 unique(a.begin(), a.end()); // keeps only unique but doesn't resize, returns pointer to new end
 a.erase(unique(a.begin(),a.end()),a.end()); // keeps only unique
+```
+
+- functional tools
+```cpp
+// transform (like map): apply to each element of a vector
+vector<int> out;
+transform(v.begin(), v.end(), back_inserter(out), f);
+
+// filter: get vector of only valid elements
+vector<int> out;
+copy_if(v.begin(), v.end(), back_inserter(out), [](int i){return i>=0;} );
 ```
 
 Partition (vector)
@@ -528,7 +539,6 @@ lower_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5* 5 6} or {1 6*}
 upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 ```
     
-# useful
 
 
 # todo
