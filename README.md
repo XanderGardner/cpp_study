@@ -25,6 +25,7 @@
   - [sorting](#sorting)
   - [searching](#searching)
 - implemented
+  - [counter](#counter)
 - [todo](#todo)
 
 ---
@@ -424,7 +425,7 @@ for (auto i : a) {
 #include <unordered_map>
 
 // create
-unordered_map<int, int> a;
+unordered_map<int, int> a; // default 0 value if not inserted
 vector<pair<int,int>> v({{1,2}, {2,3}, {3,2}});
 unordered_map<int, int> d(v.begin(), v.end());
 unordered_map<int, int> e = {{1,2}, {2,3}};
@@ -545,7 +546,14 @@ binary_search(a.begin(), a.end(), 5); // true or false
 lower_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5* 5 6} or {1 6*}
 upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 ```
-    
+
+# counter
+- keys as unique items of arr
+- values as number of occurances in arr
+```cpp
+unordered_map<int, int> a;
+for (auto i : arr) a[i]++;
+```
 
 
 # todo
