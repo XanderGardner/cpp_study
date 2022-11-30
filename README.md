@@ -16,6 +16,10 @@
   - [set](#set)
   - [unordered set](#unordered-set)
   - [multiset](#multiset)
+  - [unordered_multiset](#unordered_multiset)
+  - [map](#map)
+  - [unordered_map](#unordered_map)
+  - [multimap](#multimap)
 - stl algorithms
   - [sorting](#sorting)
   - [searching](#searching)
