@@ -177,6 +177,14 @@ for (int i : a)
   std::cout << i << ' ';
 ```
 
+iterators
+- iterator functions return iterators: `begin()` `end()` and the reverse are `rbegin()` `rend()`
+```cpp
+string::iterator i;
+for (i = s.begin(); i != s.end(); i++)
+  cout << i << endl;
+```
+
 # Control
 ```cpp
 if(condition)
