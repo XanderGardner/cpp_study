@@ -1,5 +1,7 @@
 # Table of Contents
+
 - [basics](basics.md)
+- [practice](practice.md)
 - stl data structures
   - [string](#string)
   - [struct](#struct)
@@ -18,7 +20,6 @@
   - [sorting](#sorting)
   - [searching](#searching)
 - implemented
-
 - [todo](#todo)
 
 ---
@@ -542,6 +543,7 @@ upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 
 
 # todo
+- https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 - functors
 - defaultdict
 - linked list
@@ -550,10 +552,12 @@ upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
   - bfs
 - dynamic programming
 - unions
+- trie
 - trees
   - dfs
   - bfs
+- binary search tree
+- AVL tree
 - kd trees
 - fenwick tree
 - segment tree
-
