@@ -407,10 +407,13 @@ static_assert(2+2==3+1, "2+2 = 3+1");
 
 # Lambdas
 - anonymous function
-- capture clause allows use of local variables
+- capture clause allows use of local variables as constants 
+- (must use .at(2) instead of [2] for maps because [] might edit map), unless you pass by reference
 ```cpp
-// capture clause first
-// then inputs
-// then function
-[loc_var](int input_x) { return (input_x == loc_var); }
+// capture clause first    []
+// then inputs             ()
+// then function           {}
+auto my_func = [loc_var](int input_x) { return (input_x == loc_var); }
+auto my_func = [&loc_var](int input_x) { local_var++; return (input_x == loc_var); }
+auto my_func = [&](int input_x) { return (input_x == loc_var); } // pass everything in local scope by reference
 ```

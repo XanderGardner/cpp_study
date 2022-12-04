@@ -20,7 +20,7 @@
   - [map](#map)
   - [unordered_map](#unordered_map)
   - [multimap](#multimap)
-  - [unordered_multimap)(#unordered_multimap)
+  - [unordered_multimap](#unordered_multimap)
 - stl algorithms
   - [sorting](#sorting)
   - [searching](#searching)
@@ -493,7 +493,7 @@ for (auto i : a) {
 # unordered_multimap
 - not sorted, not unique keys in key-value pairs (hashing)
 ```cpp
-#include <unordered_multimap>
+#include <unordered_map>
 
 // create
 unordered_multimap<int, int> a;
