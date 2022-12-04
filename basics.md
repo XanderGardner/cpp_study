@@ -105,6 +105,7 @@ Get max a min values of a type with header file
 INT_MIN; // int min
 INT_MAX; // int max
 LLONG_MAX; // long long int max
+LDBL_MIN; // long double min
 ```
 
 ### local instance or static
