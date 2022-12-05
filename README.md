@@ -1,40 +1,48 @@
 # Table of Contents
 
-- [basics](basics.md)
-- [practice](practice.md)
-- stl data structures
-  1. [string](#string)
-  1. [struct](#struct)
-  1. [vector](#vector)
-  1. [array](#array)
-  1. [forward_list](#forward_list)
-  1. [stack](#stack)
-  1. [pair](#pair)
-  1. [list](#list)
-  1. [queue](#queue)
-  1. [priority_queue](#priority_queue)
-- set
-  - [set](#set)
-  - [unordered_set](#unordered_set)
-  - [multiset](#multiset)
-  - [unordered_multiset](#unordered_multiset)
-- map
-  - [map](#map)
-  - [unordered_map](#unordered_map)
-  - [multimap](#multimap)
-  - [unordered_multimap](#unordered_multimap)
-  - [counter](#counter)
-- stl algorithms
-  - [sorting](#sorting)
-  - [searching](#searching)
-- algorithms
-  - [dynamic programming](#dynamic-programming)
-  - [union-find](#union-find)
-- graph
-  - [graph](#graph)
-  - [dfs](#dfs)
-  - [bfs](#bfs)
-- [todo](#todo)
+[basics](basics.md)
+
+[practice](practice.md)
+
+stl data structures
+- [string](#string)
+- [struct](#struct)
+- [vector](#vector)
+- [array](#array)
+- [forward_list](#forward_list)
+- [stack](#stack)
+- [pair](#pair)
+- [list](#list)
+- [queue](#queue)
+- [priority_queue](#priority_queue)
+
+set
+- [set](#set)
+- [unordered_set](#unordered_set)
+- [multiset](#multiset)
+- [unordered_multiset](#unordered_multiset)
+
+map
+- [map](#map)
+- [unordered_map](#unordered_map)
+- [multimap](#multimap)
+- [unordered_multimap](#unordered_multimap)
+- [counter](#counter)
+
+stl algorithms
+- [sorting](#sorting)
+- [searching](#searching)
+
+algorithms
+- [dynamic programming](#dynamic-programming)
+- [union-find](#union-find)
+
+graph
+- [graph](#graph)
+- [dfs](#dfs)
+- [bfs](#bfs)
+
+[todo](#todo)
 
 ---
 
