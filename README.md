@@ -112,6 +112,9 @@ var_name.num = 5;
 
 // create
 vector<int> a = {1,2,3};
+vector<int> a = vector<int>(3, 5); // 5 5 5
+vector<int> a;
+a.assign(3, 5); // 5 5 5
 vector<int> a(10); // size 10, all 0s
 vector<int> a(10, 2); // size 10, all 2s
 
@@ -273,7 +276,7 @@ q.size();
 
 // operations
 q.push(10);
-q.pop(); // remove from front
+q.pop(); // remove from front but doesn't return value
 q.front();
 q.back();
 ```
@@ -583,7 +586,47 @@ for (auto i : arr) a[i]++;
 ```
 
 # dynamic programming
+- recursion with memoization
+```cpp
+int fib(vector<int> &mem, int n) {
+  // memoized case
+  if (mem[n]) return mem[n];
 
+  // base case
+  if (n <= 1) { mem[n] = n; return n; }
+
+  // recurse
+  mem[n] = fib(mem, n-1) + fib(mem, n-2);
+  return mem[n];
+}
+
+int main() {
+  int n = 10;
+  vector<int> mem(n+1); // all zeros
+  return fib(mem, n);
+}
+```
+
+- when memoization might be 0
+```cpp
+int fib(unordered_map<int,int> &mem, int n) {
+  // memoized case
+  if (mem.count(n)) return mem[n];
+
+  // base case
+  if (n <= 1) { mem[n] = n; return n; }
+
+  // recurse
+  mem[n] = fib(mem, n-1) + fib(mem, n-2);
+  return mem[n];
+}
+
+int main() {
+  int n = 10;
+  unordered_map<int, int> mem;
+  cout << fib(mem, n);
+}
+```
 
 # union-find
 
@@ -592,19 +635,19 @@ for (auto i : arr) a[i]++;
 - O(n^2) space, O(1) lookup
 ```cpp
 // create adj matrix graph
-const size_t n = 5; // number nodes 0,1,...,n-1
-array<array<int, n>, n> graph = {}; // all 0s
+int n = 5; // number nodes 0,1,...,n-1
+vector<vector<int>> graph(n, vector<int>(n)); // all 0s
 
 // add edge 2 to 3
 graph[2][3] = graph[3][2] = 1;
-}
 ```
 
 - adjacency list representation
 - O(|n|+|e|) space, O(n) lookup, O(1) list connected
 ```cpp
 // create adj list graph
-const size_t n = 5; // number nodes 0,1,...,n-1
+int n = 5; // number nodes 0,1,...,n-1
+vector<vector<int>> graph(n);
 array<vector<int>, n> graph = {};
 
 // add edge 2 to 3
@@ -616,8 +659,8 @@ graph[3].push_back(2);
 - faster lookup, sacrificing space
 ```cpp
 // create adj set graph
-const size_t n = 5; // number nodes 0,1,...,n-1
-array<unordered_set<int>, n> graph = {};
+int n = 5; // number nodes 0,1,...,n-1
+vector<unordered_set<int>> graph(n);
 
 // add edge 2 to 3
 graph[2].insert(3);
@@ -636,19 +679,85 @@ graph["dog"].insert("cat");
 ```
 
 # dfs
+- good practice
+```cpp
+void dfs(vector<unordered_set<int>>& graph, vector<int>& visited, int u) {
+  cout << u;
+  visited[u] = 1;
+  for (int v : graph[u]) {
+    if (visited[v]) continue;
+    dfs(graph, visited, v);
+  }
+}
+
+int main() {
+  int n = 5;
+  vector<unordered_set<int>> graph(n);
+  vector<int> visited(n, 0);
+
+  dfs(graph, visited, 4);
+}
+```
+
+- with global variables
+- leetcode note: always assign global vars at beginning of main or vars will be used again in the next test case unchanged
+```cpp
+vector<unordered_set<int>> graph;
+vector<int> visited;
+
+void dfs(int u) {
+  cout << u;
+  visited[u] = 1;
+  for (int v : graph[u]) {
+    if (visited[v]) continue;
+    dfs(v);
+  }
+}
+
+int main() {
+  int n = 5;
+  graph.assign(n, {});
+  visited.assign(n, 0);
+  
+  dfs(4);
+}
+```
+
 
 # bfs
+- finding distances
+``` cpp
+vector<unordered_set<int>> graph;
 
+vector<int> bfs(int s) {
+  vector<int> dist(graph.size(), -1);
+  queue<int> q;
+  dist[s] = 0; q.push(s);
+  while (q.size()) {
+    int u = q.front(); q.pop();
+    for (int v : graph[u]) {
+      if (dist[v] == -1) {
+        dist[v] = dist[u] + 1;
+        q.push(v);
+      }
+    }
+  }
+  return dist;
+}
+
+int main() {
+  int n = 5;
+  graph.assign(n, {});
+  
+  vector<int> bfs(4);
+}
+```
 
 # todo
 - https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 - functors
 - linked list
-- graphs
-  - dfs
-  - bfs
-- dynamic programming
-- unions
+- union-find
 - trie
 - trees
   - dfs
