@@ -3,16 +3,16 @@
 - [basics](basics.md)
 - [practice](practice.md)
 - stl data structures
-  - [string](#string)
-  - [struct](#struct)
-  - [vector](#vector)
-  - [array](#array)
-  - [forward_list](#forward_list)
-  - [stack](#stack)
-  - [pair](#pair)
-  - [list](#list)
-  - [queue](#queue)
-  - [priority_queue](#priority_queue)
+  1. [string](#string)
+  1. [struct](#struct)
+  1. [vector](#vector)
+  1. [array](#array)
+  1. [forward_list](#forward_list)
+  1. [stack](#stack)
+  1. [pair](#pair)
+  1. [list](#list)
+  1. [queue](#queue)
+  1. [priority_queue](#priority_queue)
 - set
   - [set](#set)
   - [unordered_set](#unordered_set)
@@ -27,6 +27,9 @@
 - stl algorithms
   - [sorting](#sorting)
   - [searching](#searching)
+- algorithms
+  - [dynamic programming](#dynamic-programming)
+  - [union-find](#union-find)
 - graph
   - [graph](#graph)
   - [dfs](#dfs)
@@ -158,7 +161,7 @@ vector<int> out;
 copy_if(v.begin(), v.end(), back_inserter(out), [](int i){return i>=0;} );
 ```
 
-Partition (vector)
+- partition vector
 ```cpp
 is_partitioned(vect.begin(), vect.end(), [](int x) { return x%2==0; }); // bool if partitioned
 partition(vect.begin(), vect.end(), [](int x) { return x%2==0; }) // 2 3 4 3 7 9, partitions
@@ -169,7 +172,18 @@ partition(vect.begin(), vect.end(), [](int x) { return x%2==0; }) // 2 3 4 3 7 9
 # array
 - basic array that holds its own size
 ```cpp
+#include <array>
+
+// create
+const size_t n = 5;
+array<int,n> a = {0}; // 0,0,0,0,0
 array<int,6> a = {1,2,3}; // 1,2,3,0,0,0
+
+// set
+a[0] = 4;
+
+// read
+cout << a[3];
 ```
 
 # forward_list
@@ -560,11 +574,67 @@ unordered_map<int, int> a;
 for (auto i : arr) a[i]++;
 ```
 
+# dynamic programming
+
+
+# union-find
+
+# graph
+- adjacency matrix representation
+- O(n^2) space, O(1) lookup
+```cpp
+// create adj matrix graph
+const size_t n = 5; // number nodes 0,1,...,n-1
+array<array<int, n>, n> graph = {}; // all 0s
+
+// add edge 2 to 3
+graph[2][3] = graph[3][2] = 1;
+}
+```
+
+- adjacency list representation
+- O(|n|+|e|) space, O(n) lookup, O(1) list connected
+```cpp
+// create adj list graph
+const size_t n = 5; // number nodes 0,1,...,n-1
+array<vector<int>, n> graph = {};
+
+// add edge 2 to 3
+graph[2].push_back(3);
+graph[3].push_back(2);
+```
+
+- adjacency set representation
+- faster lookup, sacrificing space
+```cpp
+// create adj set graph
+const size_t n = 5; // number nodes 0,1,...,n-1
+array<unordered_set<int>, n> graph = {};
+
+// add edge 2 to 3
+graph[2].insert(3);
+graph[3].insert(2);
+```
+
+- map set representation
+- nodes having different names
+```cpp
+// create adj list graph
+unordered_map<string, unordered_set<string>> graph;
+
+// add edge cat to dog
+graph["cat"].insert("dog");
+graph["dog"].insert("cat");
+```
+
+# dfs
+
+# bfs
+
 
 # todo
 - https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 - functors
-- defaultdict
 - linked list
 - graphs
   - dfs

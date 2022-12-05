@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <array>
 #include <vector>
 #include <algorithm>
 #include <forward_list>
