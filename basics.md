@@ -334,7 +334,8 @@ int max(int x, int y = 0) { // default argument
 
 Pointers
 - `datatype *var_name;` or `datatype* var_name;`
-- * operator on pointer returns value that it points to
+- `*` operator on pointer returns value that it points to
+- `str->var_name` to get value of var_name in str (pointer to structure). same as `(*str).var_name`
 - & operator returns address of variable `&var`
 - array notation `nums[1][2]` pointer notation `*(*(nums + 1) + 2)`
 
@@ -355,14 +356,18 @@ for (int& x : vect) {
 
 # OOP
 - access specifier can be public, private (client and subclass can't access), or protected (client can't access but subclass can)
+- only difference of class and struct is that members are default private instead of public
 ```cpp
 class Name {
   private: // access specifier
     int a;
+    int b;
   public: 
     Name(int x) { // constructor
       a = x;
+      b = x;
     }
+    Name() : a(0), b(1) {} // constructor using initializer list
     ~Name() { } // default destructor
     void printid() { // function
       cout << "hi";

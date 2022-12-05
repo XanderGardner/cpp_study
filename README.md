@@ -27,13 +27,18 @@ map
 - [unordered_map](#unordered_map)
 - [multimap](#multimap)
 - [unordered_multimap](#unordered_multimap)
-- [counter](#counter)
+
 
 stl algorithms
 - [sorting](#sorting)
 - [searching](#searching)
 
-algorithms
+data structures 
+- [counter](#counter)
+- [ListNode](#listnode)
+- [TreeNode](#treenode)
+
+algorithms (implement)
 - [dynamic programming](#dynamic-programming)
 - [union-find](#union-find)
 
@@ -583,6 +588,32 @@ upper_bound(a.begin(), a.end(), 5) - a.begin(); // index {1 3 5 5 6*} or {1 6*}
 ```cpp
 unordered_map<int, int> a;
 for (auto i : arr) a[i]++;
+```
+
+# ListNode
+- ListNode use to make singly-linked list
+- check if not NULL (nullptr) `if (ln->next)`
+``` cpp
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+```
+
+# TreeNode
+- TreeNode used to make binary tree
+```cpp
+struct TreeNode {
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 ```
 
 # dynamic programming
