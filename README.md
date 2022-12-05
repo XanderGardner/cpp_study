@@ -847,12 +847,10 @@ int main() {
 
 # todo
 - https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
+- math
 - functors
 - union-find
 - trie
-- trees
-  - dfs
-  - bfs
 - binary search tree
 - AVL tree
 - kd trees
