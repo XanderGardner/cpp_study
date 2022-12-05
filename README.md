@@ -615,6 +615,49 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 ```
+- dfs for tree
+```cpp
+void preorder(TreeNode* node) {
+  if (!node) return;
+  cout << TreeNode->val << " ";
+  preorder(TreeNode->left);
+  preorder(TreeNode->right);
+}
+
+void inorder(TreeNode* node) {
+  if (!node) return;
+  inorder(TreeNode->left);
+  cout << TreeNode->val << " ";
+  inorder(TreeNode->right);
+}
+
+void postorder(TreeNode* node) {
+  if (!node) return;
+  postorder(TreeNode->left);
+  postorder(TreeNode->right);
+  cout << TreeNode->val << " ";
+}
+```
+
+- bfs for tree
+```cpp
+void bfs(TreeNode* root) {
+  if(!root) return;
+  
+  queue<TreeNode*> q;
+  q.push(root);
+
+  while (!q.empty()){
+    for(int i=0; i<q.size(); i++){
+      TreeNode* curr = q.front(); q.pop();
+      cout << curr->val << ' ';
+      
+      if(curr->left) q.push(curr->left);
+      if(curr->right) q.push(curr->right);
+    }
+  }
+}
+```
 
 # dynamic programming
 - recursion with memoization
@@ -787,7 +830,6 @@ int main() {
 # todo
 - https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 - functors
-- linked list
 - union-find
 - trie
 - trees
