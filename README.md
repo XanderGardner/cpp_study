@@ -15,6 +15,7 @@ stl data structures
 - [list](#list)
 - [queue](#queue)
 - [priority_queue](#priority_queue)
+- [bitset](#bitset)
 
 set
 - [set](#set)
@@ -303,6 +304,23 @@ g.size();
 g.push(10);
 g.top(); // look only
 g.pop(); // pop top
+```
+
+# bitset
+```cpp
+// create
+uint32_t n = 5; // takes exactly 32 bits
+bitset<32> a(n);
+
+// read
+a.to_string(); // "000...0101"
+a.count(n); // count number of 1s
+a.any(); // if any is 1
+a.all(); // if all 1s
+
+// modify
+a[0]; // access 0th bit (from right side in string)
+a[0].flip();
 ```
 
 # set
