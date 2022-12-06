@@ -172,6 +172,7 @@ a.erase(unique(a.begin(),a.end()),a.end()); // keeps only unique
 // transform (like map): apply to each element of a vector
 vector<int> out;
 transform(v.begin(), v.end(), back_inserter(out), f);
+for (int& n : nums) n = pow(n,2);
 
 // filter: get vector of only valid elements
 vector<int> out;
