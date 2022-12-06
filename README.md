@@ -29,7 +29,6 @@ map
 - [multimap](#multimap)
 - [unordered_multimap](#unordered_multimap)
 
-
 stl algorithms
 - [sorting](#sorting)
 - [searching](#searching)
@@ -47,6 +46,7 @@ graph
 - [graph](#graph)
 - [dfs](#dfs)
 - [bfs](#bfs)
+- [hascycle](#hascycle)
 
 [todo](#todo)
 
@@ -371,6 +371,8 @@ a.insert(1);
 
 // read
 a.count(5); // 1 or 0 for set
+int b = *a.begin(); // pop
+a.remove(a.begin());
 
 // remove
 a.erase(10);
@@ -740,7 +742,7 @@ graph[2][3] = graph[3][2] = 1;
 // create adj list graph
 int n = 5; // number nodes 0,1,...,n-1
 vector<vector<int>> graph(n);
-array<vector<int>, n> graph = {};
+vector<vector<int>, n> graph = {};
 
 // add edge 2 to 3
 graph[2].push_back(3);
@@ -843,6 +845,38 @@ int main() {
   
   vector<int> bfs(4);
 }
+```
+
+# hascycle
+- algorithm to find if (possibly not connected) graph has cycle 
+- maintain a set S of all nodes. Then you take a node from that set, run dfs on that node, checking for back edges (if so, you know you have a cycle). For each node you visit, remove that node from the set S. After dfs is finished, you check if S is empty. If so, then you know there are no cycles. Otherwise, you take a node from S, and run dfs/bfs on that node. The runtime should be O(n), where n is the number of nodes.
+```cpp
+// check undirected cycle using bfs
+
+unordered_set<int> s; // set of elements to start from
+for (int i=0; i<numCourses; i++) s.insert(i);
+
+// bfs on 0
+while (!s.empty()) {
+  unordered_set<int> visited = {};
+  int bfs_start = *s.begin();
+  queue<int> q; q.push(bfs_start);
+  while (!q.empty()) {
+    int u = q.front(); q.pop();
+    s.erase(u); // remove from remaining to visit
+    visited.insert(u);
+    for (int v : graph[u]) {
+      if (visited.count(v)) {
+        return false; // cycle detected
+      } else {
+        q.push(v);
+      }
+    }
+  }
+}
+
+
+// check directed cycle using dfs
 ```
 
 # todo
