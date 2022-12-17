@@ -136,6 +136,7 @@ a.pop_back();
 
 // insert (emplace is inplace efficient inserting)
 a.insert(a.end(), v.begin(), v.end()); // append vector to end [a, v]
+a.insert(a.end(), 5, 1); // insert 5 1s
 a.emplace(vec.begin(), 5); // {5,1,2,3}
 a.emplace(vec.end()-1, 5); // {1,2,5,3}
 ```
